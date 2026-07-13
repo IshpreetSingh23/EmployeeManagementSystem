@@ -1,0 +1,90 @@
+@model List<EmployeeManagementSystem.Models.Attendance>
+
+@{
+    ViewData["Title"] = "Attendance List";
+}
+
+<div class="container mt-4">
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["Success"]
+        </div>
+    }
+
+    <div class="d-flex justify-content-between mb-3">
+
+        <h2>Attendance List</h2>
+
+        <a asp-action="Add" class="btn btn-primary">
+            Mark Attendance
+        </a>
+
+    </div>
+
+    <table class="table table-bordered table-striped">
+
+        <thead class="table-dark">
+
+            <tr>
+
+                <th>ID</th>
+                <th>Employee ID</th>
+                <th>Employee Name</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Action</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+        @if(Model != null && Model.Count > 0)
+        {
+            foreach(var item in Model)
+            {
+                <tr>
+
+                    <td>@item.AttendanceId</td>
+                    <td>@item.EmployeeId</td>
+                    <td>@item.EmployeeName</td>
+                    <td>@item.AttendanceDate.ToShortDateString()</td>
+                    <td>@item.Status</td>
+
+                    <td>
+
+                        <a asp-action="Edit"
+                           asp-route-id="@item.AttendanceId"
+                           class="btn btn-warning btn-sm">
+                            Edit
+                        </a>
+
+                        <a asp-action="Delete"
+                           asp-route-id="@item.AttendanceId"
+                           onclick="return confirm('Delete Attendance?');"
+                           class="btn btn-danger btn-sm">
+                            Delete
+                        </a>
+
+                    </td>
+
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="6" class="text-center">
+                    No Attendance Found
+                </td>
+            </tr>
+        }
+
+        </tbody>
+
+    </table>
+
+</div>

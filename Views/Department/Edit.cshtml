@@ -1,0 +1,57 @@
+@model EmployeeManagementSystem.Models.Department
+
+@{
+    ViewData["Title"] = "Edit Department";
+}
+
+<div class="container mt-5">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-warning">
+
+            <h3>Edit Department</h3>
+
+        </div>
+
+        <div class="card-body">
+
+            <form asp-action="Edit" method="post">
+
+                <input type="hidden"
+                       asp-for="DepartmentId"/>
+
+                <div class="mb-3">
+
+                    <label>Department Name</label>
+
+                    <input asp-for="DepartmentName"
+                           class="form-control"/>
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label>Location</label>
+
+                    <input asp-for="Location"
+                           class="form-control"/>
+
+                </div>
+
+                <button class="btn btn-success">
+                    Update Department
+                </button>
+
+                <a asp-action="Index"
+                   class="btn btn-secondary">
+                    Cancel
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>

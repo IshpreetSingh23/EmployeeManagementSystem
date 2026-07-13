@@ -1,0 +1,63 @@
+@model EmployeeManagementSystem.Models.Attendance
+
+@{
+    ViewData["Title"] = "Edit Attendance";
+}
+
+<div class="container mt-5">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-warning text-dark">
+            <h3>Edit Attendance</h3>
+        </div>
+
+        <div class="card-body">
+
+            <form asp-action="Edit" method="post">
+
+                <input type="hidden" asp-for="AttendanceId" />
+
+                <div class="mb-3">
+                    <label>Employee ID</label>
+                    <input asp-for="EmployeeId" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label>Employee Name</label>
+                    <input asp-for="EmployeeName" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label>Date</label>
+                    <input asp-for="AttendanceDate"
+                           type="date"
+                           class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label>Status</label>
+
+                    <select asp-for="Status" class="form-control">
+                        <option value="Present">Present</option>
+                        <option value="Absent">Absent</option>
+                    </select>
+
+                </div>
+
+                <button type="submit" class="btn btn-success">
+                    Update Attendance
+                </button>
+
+                <a asp-action="Index"
+                   class="btn btn-secondary">
+                    Cancel
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>

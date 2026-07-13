@@ -1,0 +1,86 @@
+@model List<EmployeeManagementSystem.Models.Department>
+
+@{
+    ViewData["Title"] = "Department List";
+}
+
+<div class="container mt-4">
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["Success"]
+        </div>
+    }
+
+    <div class="d-flex justify-content-between mb-3">
+
+        <h2>Department List</h2>
+
+        <a asp-action="Add" class="btn btn-primary">
+            Add Department
+        </a>
+
+    </div>
+
+    <table class="table table-bordered table-striped">
+
+        <thead class="table-dark">
+
+            <tr>
+
+                <th>ID</th>
+                <th>Department</th>
+                <th>Location</th>
+                <th>Action</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+        @if(Model.Count > 0)
+        {
+            foreach(var dept in Model)
+            {
+                <tr>
+
+                    <td>@dept.DepartmentId</td>
+                    <td>@dept.DepartmentName</td>
+                    <td>@dept.Location</td>
+
+                    <td>
+
+                        <a asp-action="Edit"
+                           asp-route-id="@dept.DepartmentId"
+                           class="btn btn-warning btn-sm">
+                            Edit
+                        </a>
+
+                        <a asp-action="Delete"
+                           asp-route-id="@dept.DepartmentId"
+                           onclick="return confirm('Delete Department?');"
+                           class="btn btn-danger btn-sm">
+                            Delete
+                        </a>
+
+                    </td>
+
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="4" class="text-center">
+                    No Departments Found
+                </td>
+            </tr>
+        }
+
+        </tbody>
+
+    </table>
+
+</div>

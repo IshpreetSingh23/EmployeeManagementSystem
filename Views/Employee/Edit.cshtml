@@ -1,0 +1,60 @@
+@model EmployeeManagementSystem.Models.Employee
+
+@{
+    ViewData["Title"] = "Edit Employee";
+}
+
+<div class="container mt-5">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-warning text-dark">
+            <h3>Edit Employee</h3>
+        </div>
+
+        <div class="card-body">
+
+            <form asp-action="Edit" method="post">
+
+                <input type="hidden" asp-for="EmployeeId" />
+
+                <div class="mb-3">
+                    <label>Name</label>
+                    <input asp-for="Name" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label>Email</label>
+                    <input asp-for="Email" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label>Phone</label>
+                    <input asp-for="Phone" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label>Department</label>
+                    <input asp-for="Department" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label>Salary</label>
+                    <input asp-for="Salary" class="form-control" />
+                </div>
+
+                <button type="submit" class="btn btn-success">
+                    Update Employee
+                </button>
+
+                <a asp-action="Index" class="btn btn-secondary">
+                    Cancel
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
