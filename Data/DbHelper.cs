@@ -8,8 +8,7 @@ namespace EmployeeManagementSystem.Data
     public class DbHelper
     {
         private readonly string connectionString =
-            "Server=127.0.0.1;Port=3306;Database=EmployeeManagementDB;Uid=root;Pwd=Harsimran@23;SslMode=None;";
-
+            "Server=127.0.0.1;Port=3306;Database=EmployeeManagementDB;Uid=root;Pwd=YOUR_PASSWORD;SslMode=None";
         // Login
         public User? ValidateUser(string email, string password)
         {
